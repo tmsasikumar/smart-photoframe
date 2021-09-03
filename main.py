@@ -5,9 +5,11 @@ from googleapiclient.discovery import build
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
+from google.oauth2 import service_account
 
 SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
 if os.path.exists('token.json'):
+        #creds = service_account.Credentials.from_service_account_file('token.json')
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
         print(creds.expired)
 if not creds or not creds.valid:
